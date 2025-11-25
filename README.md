@@ -87,3 +87,17 @@
 ### `MONGO_URI=mongodb+srv://...`
 ### `JWT_SECRET=super_secreto`
 ### `PORT=5000`
+
+## ▶️ Levantar local
+### bash
+### Copy
+### git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
+### cd backend
+### npm install
+### cp .env.example .env        # Completa tus datos
+### npm run dev                 # Escucha en :5000
+
+## 📌 Próximos pasos
+### Paginación en listados
+### “Mis likes”, “Mis favoritos”
+### Frontend React → conexión a esta API
