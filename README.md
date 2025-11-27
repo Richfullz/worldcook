@@ -1,103 +1,90 @@
-# 🍽️ Recetas App – Backend (MERN Stack)
+🌍 WorldCook – MERN Stack Recipe Platform
+Cocina. Comparte. Explora.
+Una aplicación full-stack de recetas construida con MongoDB, Express, React y Node.js que permite a los usuarios publicar, interactuar y descubrir sabores de todo el mundo.
+🎯 ¿Qué hace especial a WorldCook?
+Table
+Copy
+Característica	Descripción rápida
+🔐 Auth inteligente	Login con email o nickname + JWT
+📸 Imágenes reales	Avatar de perfil + cover + galería de pasos
+💬 Interacción total	Like, favorito, comentario editable y rating 0-5 ⭐
+🔍 Búsqueda avanzada	Filtros por título, categoría, tiempo, dieta, alérgenos
+✏️ Edición inline	Edita tus comentarios sin salir de la receta
+💔 Favoritos dinámicos	Botón “Quitar” + vista “Recetas guardadas”
+🌗 Diseño oscuro premium	Sin CSS nuevo, solo clases existentes
+🧪 Demo interactiva (Backend)
+Levanta la API en 30 segundos:
+bash
+Copy
+git clone https://github.com/TU_USUARIO/worldcook-backend.git
+cd backend
+npm install
+cp .env.example .env              # Completa MONGO_URI y JWT_SECRET
+npm run dev                       # 🚀 Escucha en :5000
+📸 Vista previa de funciones
+1. Perfil de usuario
+Avatar real
+Mis recetas
+Editar perfil / cambiar foto
+https://i.imgur.com/8X8X8X8.png
+2. Publicar receta
+Cover + galería de pasos
+Ingredientes, tiempo, porciones, categoría, dieta, alérgenos
+Imágenes se borran al actualizar/eliminar
+https://i.imgur.com/9X9X9X9.png
+3. Interacciones en tiempo real
+Like ❤️ – alterna estado
+Favorito 💾 – vista “Mis guardados” con botón “Quitar”
+Comentarios editables ✏️ – inline, sin modal
+Rating ⭐ – barra de % + estrellas interactivas
+https://i.imgur.com/7X7X7X7.png
+🔧 Stack técnico (Backend)
+Table
+Copy
+Capa	Tecnología
+Runtime	Node.js
+Framework	Express.js
+Base datos	MongoDB (Mongoose)
+Auth	JWT (jsonwebtoken)
+Img upload	Multer (5 MB, JPG/PNG/WebP)
+Hash pwd	bcryptjs
+Entorno	dotenv
+🧪 Endpoints destacados
+🔐 Auth
+http
+Copy
+POST /api/users/register → Crear cuenta (+ avatar)
+POST /api/users/login → Login (email o nickname)
+GET /api/users/profile/:id → Perfil público
+🧑‍🍳 Recetas
+http
+Copy
+POST /api/recipes/create → Nueva receta (+ imágenes)
+GET /api/recipes/search?title=tarta&category=Postres&maxTime=60
+GET /api/recipes/view/:id → Detalle público
+💬 Interacciones
+http
+Copy
+POST /likes/toggle/:id → Like / unlike
+POST /favorites/toggle/:id → Fav / unfav
+PUT /comments/update/:id → Editar comentario (autor)
+POST /ratings/add/:id → Valorar 1-5 ⭐
+🌟 Mejoras implementadas
+Table
+Copy
+Mejora	Detalle
+✅ Edición inline	Comentarios editables sin modal
+✅ Favoritos dinámicos	Botón “Quitar” + vista “Recetas guardadas”
+✅ Avatar real	Se pide por axios si no viene en el objeto
+✅ Like/Fav siempre visibles	No solo para el dueño
+✅ Rating en %	Barra visual 0-100 %
+✅ Búsqueda avanzada	Filtros por título, categoría, tiempo, dieta, alérgenos
+✅ Imágenes limpias	Se borran del disco al actualizar/eliminar
 
-## Esta App es una aplicacion de recetas de cocina construida con tecnologías Full-Stack MERN,
-## permite a los usuarios registrarse, publicar recetas, interactuar con ellas aportando likes, favoritos,comentarios y valoraciones a las recetas
-## nuestras o a otros usuarios y tambien subir imagenes, una para ponerla de perfil y otra para ver los pasos como se hacen o algun punto importante que destaque
-## en la receta
+🧪 Próximos pasos (Frontend en construcción)
+✅ PWA – para instalar como app
+✅ Notificaciones toast – para likes, comentarios, etc.
+✅ Búsqueda en tiempo real – con debounce
+✅ Paginación infinita – en listados
 
-# Arquitectura
-## Backend
-### backend/
-### ├─ 📁 controllers/     # Lógica de negocio
-### ├─ 📁 middleware/      # Auth & multer
-### ├─ 📁 models/          # Esquemas MongoDB
-### ├─ 📁 routes/          # Endpoints API
-### ├─ 📁 uploads/         # Imágenes (users & recipes)
-### ├─ .env                # Variables de entorno (NO subir)
-### ├─ .gitignore
-### ├─ server.js           # Entrada de la aplicación
-### └─ README.md
-
-## 🚀 Stack Tecnológico
-
-### | Capa        | Tecnología              |
-### |-------------|-------------------------|
-### | Runtime     | Node.js                 |
-### | Framework   | Express.js              |
-### | Base datos  | MongoDB (Mongoose)      |
-### | Auth        | JWT (jsonwebtoken)      |
-### | Img upload  | Multer                  |
-### | Hash pwd    | bcryptjs                |
-### | Entorno     | dotenv                  |
-
-## 🔐 Autenticación
-### POST /api/users/register     ➜ Crear cuenta (+ avatar)
-### POST /api/users/login        ➜ Login (email o nickname)
-### GET  /api/users/profile/:id  ➜ Ver perfil público
-### PUT  /api/users/update/:id   ➜ Editar perfil / cambiar avatar
-### DELETE /api/users/delete/:id ➜ Eliminar cuenta + avatar
-
-## **Header protegido:**  
-### `Authorization: <JWT_TOKEN>`
-
-## 🧑‍🍳 Recetas (CRUD completo)
-### POST   /api/recipe/create        ➜ Nueva receta (+ imágenes)
-### GET    /api/recipe/my            ➜ Mis recetas
-### GET    /api/recipe/view/:id      ➜ Detalle receta (público)
-### PUT    /api/recipe/update/:id    ➜ Editar (solo autor)
-### DELETE /api/recipe/delete/:id    ➜ Eliminar (borra imgs)
-### GET    /api/recipe/search        ➜ Filtros: título, categoría, dieta, alérgenos, tiempo máximo, ordenación
-### Copy
-
-##**Ejemplo de búsqueda:**  
-### /api/recipe/search?title=tarta&category=Postres&maxTime=60&sort=title`
-
-## 💬 Interacciones
-
-### | Recurso   | Método | Endpoint (base `/api`) | Descripción |
-### |-----------|--------|------------------------|-------------|
-### | **Comentarios** | POST | `/comments/add/:id` | Agregar |
-### |               | GET  | `/comments/view/:id` | Ver todos |
-### |               | PUT  | `/comments/update/:id` | Editar (autor) |
-### |               | DELETE | `/comments/delete/:id` | Borrar (autor) |
-### |               | GET | `/comments/count/:id` | Total |
-### | **Likes** | POST | `/likes/toggle/:id` | Like / unlike |
-### |           | GET  | `/likes/count/:id` | Total likes |
-### | **Favoritos** | POST | `/favorites/toggle/:id` | Fav / unfav |
-### |               | GET  | `/favorites/count/:id` | Total favoritos |
-### | **Ratings** | POST | `/ratings/add/:id` | Valorar 1-5 ⭐ |
-### |             | GET  | `/ratings/get/:id` | Promedio + total |
-
-### > El mismo endpoint **crea** o **elimina** el like/favorito si se pulsa dos veces.
-
-## 📸 Subida de imágenes
-
-### | Tipo | Ruta almacenamiento | Cantidad / tamaño |
-### |------|---------------------|-------------------|
-### | Avatar usuario | `/uploads/users/` | 1 archivo |
-### | Cover receta   | `/uploads/recipes/cover/` | 1 archivo |
-### | Steps receta   | `/uploads/recipes/steps/` | hasta 10 archivos |
-### | Límite individual | 5 MB | JPG, PNG, WebP |
-
-### Al actualizar/eliminar receta o usuario **se borran los archivos antiguos del disco**.
-
-## 🌍 Variables de entorno (.env)
-
-## bash
-### `MONGO_URI=mongodb+srv://...`
-### `JWT_SECRET=super_secreto`
-### `PORT=5000`
-
-## ▶️ Levantar local
-### bash
-### Copy
-### git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-### cd backend
-### npm install
-### cp .env.example .env        # Completa tus datos
-### npm run dev                 # Escucha en :5000
-
-## 📌 Próximos pasos
-### Paginación en listados
-### “Mis likes”, “Mis favoritos”
-### Frontend React → conexión a esta API
+Creado por RichFullz 💛 – 2025
