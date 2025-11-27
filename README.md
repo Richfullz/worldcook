@@ -141,4 +141,48 @@
 ### ✅ Búsqueda en tiempo real – con debounce
 ### ✅ Paginación infinita – en listados
 
+## Imagenes del proyecto:
+
+## Home
+### <img width="1771" height="914" alt="image" src="https://github.com/user-attachments/assets/f4d46e5f-3bc3-43bd-bc0c-c24632cb4b65" />
+### <img width="1766" height="914" alt="image" src="https://github.com/user-attachments/assets/5868e027-82e3-419d-8956-71b6a6b84eda" />
+
+## Register
+### <img width="1204" height="895" alt="image" src="https://github.com/user-attachments/assets/73e729b8-50b4-4b1d-93b7-eb2f910593a3" />
+### <img width="1296" height="872" alt="image" src="https://github.com/user-attachments/assets/7a3aa372-0ca0-4e2e-a1e0-7085a3c2e6d2" />
+
+## Login
+### <img width="1077" height="850" alt="image" src="https://github.com/user-attachments/assets/4008b627-0b46-4159-b209-0f4ebc0902fd" />
+
+## Profile
+### <img width="1164" height="910" alt="image" src="https://github.com/user-attachments/assets/4b05932b-3a39-4f02-8db9-43f9ef82f4dd" />
+
+## Edit Profile
+### <img width="1836" height="917" alt="image" src="https://github.com/user-attachments/assets/6669676e-58a8-4b4a-aac4-da257603d339" />
+### <img width="981" height="878" alt="image" src="https://github.com/user-attachments/assets/1fcd15fe-66a8-459b-b168-921489ea24e5" />
+
+## boton eliminar cuenta
+### <img width="1533" height="864" alt="image" src="https://github.com/user-attachments/assets/24c9c3e0-a2e4-4cf4-8337-7ecfb10c4105" />
+
+## Mis recetas
+### <img width="1602" height="868" alt="image" src="https://github.com/user-attachments/assets/f8ee6cfd-3ffd-42d9-953e-a9cfde452f22" />
+
+## ver receta
+### <img width="1670" height="897" alt="image" src="https://github.com/user-attachments/assets/84469c9c-86cf-48b9-b530-7c72f04143d5" />
+### <img width="1282" height="591" alt="image" src="https://github.com/user-attachments/assets/8be7af79-c943-4b4e-a899-cd6b5ee2f5df" />
+### <img width="1245" height="895" alt="image" src="https://github.com/user-attachments/assets/0614c6d6-91f5-4229-ac31-1e6780385d5a" />
+### <img width="1403" height="918" alt="image" src="https://github.com/user-attachments/assets/16595d29-cfd2-4765-aa8d-17295b905473" />
+### <img width="871" height="719" alt="image" src="https://github.com/user-attachments/assets/0a5ccb13-f399-4832-9c7d-57b62da868ed" />
+### <img width="1527" height="849" alt="image" src="https://github.com/user-attachments/assets/bbfebdf6-dc12-49e0-a223-e75eab80a56b" />
+
+## Todas las recetas
+### <img width="1418" height="861" alt="image" src="https://github.com/user-attachments/assets/297ef435-3365-48c3-be03-4d6fa51192dc" />
+### <img width="1532" height="902" alt="image" src="https://github.com/user-attachments/assets/f9db63c5-310c-420d-a700-e463f8fff469" />
+### <img width="1172" height="622" alt="image" src="https://github.com/user-attachments/assets/72e4f15e-82b6-48ff-907d-3a7389f09c08" />
+### <img width="1356" height="845" alt="image" src="https://github.com/user-attachments/assets/f0841672-0cda-4642-aca3-c0ef3eff0988" />
+### <img width="1111" height="659" alt="image" src="https://github.com/user-attachments/assets/3d10feab-f4cf-4424-8aa0-073de7da9f31" />
+
+## Recetas guardadas en favoritos
+### <img width="1779" height="783" alt="image" src="https://github.com/user-attachments/assets/b75182ae-0482-4bc7-86f0-2abf8578cd52" />
+
 # Creado por RichFullz 💛 – 2025
