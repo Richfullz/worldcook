@@ -5,6 +5,10 @@ export default function Header() {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+    // URL híbrida: producción o local
+    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
     useEffect(() => {
         const raw = localStorage.getItem('user');
         if (raw) setUser(JSON.parse(raw));
@@ -29,7 +33,7 @@ export default function Header() {
                     <>
                         <span className="user-info">
                             <img
-                                src={user.avatar ? `http://localhost:5000${user.avatar}` : 'src/assets/user.png'}
+                                src={user.avatar ? `${baseUrl}${user.avatar}` : 'src/assets/user.png'}
                                 alt="Avatar"
                                 className="header-avatar"
                             />
