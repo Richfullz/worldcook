@@ -1,8 +1,8 @@
-#🌍 WorldCook – MERN Stack Recipe Platform
+# 🌍 WorldCook – MERN Stack Recipe Platform
 ## Cocina. Comparte. Explora.
 ## Una aplicación full-stack de recetas construida con MongoDB, Express, React y Node.js que permite a los usuarios publicar, interactuar y descubrir sabores de todo el mundo.
 ## 🎯 ¿Qué hace especial a WorldCook?
-##Table
+## Table
 ## Copy
 ## Característica	Descripción rápida
 ### 🔐 Auth inteligente	Login con email o nickname + JWT
