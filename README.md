@@ -25,11 +25,12 @@
 
 ## 📸 Vista previa de funciones
 ### 1. Perfil de usuario
-### Avatar real
+### Avatar real + datos personales + boton de editar +
+### acceso a sus recetas + acceso a favoritos guardados+ eliminar cuenta
 ## Mis recetas
-### Editar perfil / cambiar foto
+### Editar receta
 ### 2. Publicar receta
-### Cover + galería de pasos
+### Formulario
 ### Ingredientes, tiempo, porciones, categoría, dieta, alérgenos
 ### Imágenes se borran al actualizar/eliminar
 ### 3. Interacciones en tiempo real
@@ -72,19 +73,72 @@
 ### 🌟 Mejoras implementadas
 ### Table
 ### Copy
-### Mejora	Detalle
-## ✅ Edición inline	Comentarios editables sin modal
-## ✅ Favoritos dinámicos	Botón “Quitar” + vista “Recetas guardadas”
-## ✅ Avatar real	Se pide por axios si no viene en el objeto
-## ✅ Like/Fav siempre visibles	No solo para el dueño
-## ✅ Rating en %	Barra visual 0-100 %
-## ✅ Búsqueda avanzada	Filtros por título, categoría, tiempo, dieta, alérgenos
-## ✅ Imágenes limpias	Se borran del disco al actualizar/eliminar
 
-# 🧪 Próximos pasos (Frontend en construcción)
-## ✅ PWA – para instalar como app
-## ✅ Notificaciones toast – para likes, comentarios, etc.
-## ✅ Búsqueda en tiempo real – con debounce
-## ✅ Paginación infinita – en listados
+## 🧱 Stack técnico (Backend)
+### Table
+### Copy
+### Capa	Tecnología
+### Runtime	Node.js
+### Framework	Express.js
+### Base datos	MongoDB (Mongoose)
+### Auth	JWT (jsonwebtoken)
+### Img upload	Multer (5 MB, JPG/PNG/WebP)
+### Hash pwd	bcryptjs
+### Entorno	dotenv
+
+## 🔐 Autenticación (JWT)
+### Table
+### Copy
+### Método	Endpoint	Descripción
+### POST	/api/users/register	Crear cuenta (+ avatar)
+### POST	/api/users/login	Login (email o nickname)
+### GET	/api/users/profile/:id	Perfil público
+### PUT	/api/users/update/:id	Editar perfil / avatar
+### DELETE	/api/users/delete/:id	Eliminar cuenta + avatar
+### Header protegido:
+### http
+### Copy
+### Authorization: <tu_JWT>
+
+## 🧑‍🍳 Recetas (CRUD + imágenes)
+### Table
+### Copy
+### Método	Endpoint	Uso
+### POST	/api/recipes/create	Nueva receta (+ imágenes)
+### GET	/api/recipes/my	Mis recetas
+### GET	/api/recipes/view/:id	Detalle (público)
+### PUT	/api/recipes/update/:id	Editar (autor)
+### DELETE	/api/recipes/delete/:id	Eliminar (+ imágenes)
+### GET	/api/recipes/search	Filtros avanzados
+### Ejemplo de búsqueda:
+### /api/recipes/search?title=tarta&category=Postres&maxTime=60&sort=title
+
+## 💬 Interacciones (Like, Fav, Comentario, Rating)
+### Table
+### Copy
+### Recurso	Método	Endpoint	Acción
+### Comentarios	POST	/comments/add/:id	Agregar
+### PUT	/comments/update/:id	Editar (autor)
+### DELETE	/comments/delete/:id	Borrar (autor)
+### Likes	POST	/likes/toggle/:id	Like / unlike
+### Favoritos	POST	/favorites/toggle/:id	Fav / unfav
+### Ratings	POST	/ratings/add/:id	Valorar 1-5 ⭐
+### Cada endpoint de like/fav alterna estado (si das like 2 veces → se quita).
+
+## 📸 Subida de imágenes (Multer)
+### Table
+### Copy
+### Tipo	Ruta	Límite
+### Avatar usuario	/uploads/users/	1 archivo
+### Cover receta	/uploads/recipes/cover/	1 archivo
+### Steps receta	/uploads/recipes/steps/	hasta 10 archivos
+### Individual	5 MB	JPG, PNG, WebP
+### Al actualizar/eliminar usuario o receta → imágenes antiguas se borran del disco.
+
+## 🧪 Próximos pasos (Frontend en construcción)
+### ✅ PWA – para instalar como app
+### ✅ Notificaciones toast – para likes, comentarios, etc.
+### ✅ Búsqueda en tiempo real – con debounce
+### ✅ Paginación infinita – en listados
 
 # Creado por RichFullz 💛 – 2025
