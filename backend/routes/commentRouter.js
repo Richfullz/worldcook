@@ -8,7 +8,7 @@ const commentController = require('../controllers/CommentController');
 router.post('/add/:id', protect, commentController.addComment);
 
 // Obtener comentarios de una receta
-router.get('/view/:id', commentController.getCommentsByRecipe);
+router.get('/view/:id', protect, commentController.getCommentsByRecipe);
 
 // Eliminar comentario
 router.delete('/delete/:id', protect, commentController.deleteComment);

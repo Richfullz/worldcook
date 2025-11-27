@@ -8,5 +8,5 @@ router.post('/add/:id', protect, ratingController.addOrUpdateRating);
 
 // Obtener estadísticas de rating
 router.get('/get/:id', ratingController.getRatingStats);
-
+router.get('/my/:id', protect, ratingController.getMyRating);
 module.exports = router;

@@ -10,6 +10,9 @@ const router = express.Router();
 router.post('/register', uploadUserAvatar.single('avatar'), userController.registerUser);
 router.post('/login', userController.loginUser);
 
+//Ver todos los usuarios
+router.get('/stats', userController.getStats);
+
 // Rutas protegidas
 router.get('/profile/:id', protect, userController.getProfile);
 router.put('/update/:id', protect, uploadUserAvatar.single('avatar'), userController.updateProfile);

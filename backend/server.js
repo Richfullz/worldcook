@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 // Rutas
 app.use('/api/users', userRoutes);
 app.use('/api/likes', likeRouter);
-app.use('/api/recipe', recipeRouter);
+app.use('/api/recipes', recipeRouter);
 app.use('/api/favorites', favoriteRouter);
 app.use('/api/comments', commentRouter);
 app.use('/api/ratings', ratingRouter);

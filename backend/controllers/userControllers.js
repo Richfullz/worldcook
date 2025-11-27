@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
-
+const Recipe = require('../models/RecipeModel')
 
 // Generar token
 const generateToken = (id) => {
@@ -148,7 +148,6 @@ const updateProfile = async (req, res) => {
                 try {
                     if (fs.existsSync(oldPath)) {
                         fs.unlinkSync(oldPath);
-                        console.log('Avatar antiguo borrado:', oldPath);
                     }
                 } catch (err) {
                     console.error('Error al borrar avatar antiguo:', err);
@@ -194,7 +193,6 @@ const deleteUser = async (req, res) => {
             try {
                 if (fs.existsSync(avatarPath)) {
                     fs.unlinkSync(avatarPath);
-                    console.log('Avatar eliminado:', avatarPath);
                 }
             } catch (err) {
                 console.error('Error al borrar avatar del usuario:', err);
@@ -228,11 +226,25 @@ const getAvatar = async (req, res) => {
         res.status(500).json({ message: 'Error interno' });
     }
 };
+// Stats públicas
+const getStats = async (req, res) => {
+    try {
+        const totalUsers = await User.countDocuments();
+        const totalRecipes = await Recipe.countDocuments();
+        return res.json({ totalUsers, totalRecipes, uniqueCountries: 0 });
+    } catch (err) {
+        console.error('Error en getStats:', err);
+        res.status(500).json({ message: 'Error interno al obtener estadísticas' });
+    }
+};
+
+
 
 module.exports = {
     registerUser,
     loginUser,
     getProfile,
+    getStats,
     updateProfile,
     deleteUser,
     getAvatar

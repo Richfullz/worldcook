@@ -44,5 +44,13 @@ const getRatingStats = async (req, res) => {
         res.status(500).json({ message: 'Error interno al obtener estadísticas de rating.' });
     }
 };
-
-module.exports = { addOrUpdateRating, getRatingStats };
+const getMyRating = async (req, res) => {
+    try {
+        const r = await Rating.findOne({ user: req.user._id, recipe: req.params.id });
+        res.json({ myRating: r ? r.score : 0 });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error al obtener tu valoración.' });
+    }
+};
+module.exports = { addOrUpdateRating, getRatingStats, getMyRating };

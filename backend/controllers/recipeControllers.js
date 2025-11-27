@@ -66,7 +66,7 @@ const createRecipe = async (req, res) => {
 // Obtener todas las recetas (básico)
 const getRecipes = async (req, res) => {
     try {
-        const recipes = await Recipe.find({ author: req.user._id }).populate('author', 'name email');
+        const recipes = await Recipe.find({ author: req.user._id }).populate('author', 'nickname name email');
         res.json(recipes);
     } catch (error) {
         console.error('Error en getRecipes:', error);
@@ -153,7 +153,7 @@ const getRecipeById = async (req, res) => {
         const recipeId = req.params.id;
 
         const recipe = await Recipe.findById(recipeId)
-            .populate('author', 'name email')
+            .populate('author', 'nickname name email')
             .populate('comments.user', 'name email');
 
         if (!recipe) {
@@ -186,7 +186,6 @@ const deleteRecipe = async (req, res) => {
                 const coverPath = path.join(__dirname, '..', recipe.imageCover.replace(/^\/+/, ''));
                 if (fs.existsSync(coverPath)) {
                     fs.unlinkSync(coverPath);
-                    console.log('Cover eliminado:', coverPath);
                 }
             } catch (err) {
                 console.error('Error borrando imageCover:', err);
@@ -201,7 +200,6 @@ const deleteRecipe = async (req, res) => {
                     const imgPath = path.join(__dirname, '..', imgRel.replace(/^\/+/, ''));
                     if (fs.existsSync(imgPath)) {
                         fs.unlinkSync(imgPath);
-                        console.log('Imagen de steps eliminada:', imgPath);
                     }
                 } catch (err) {
                     console.error('Error borrando image step:', err);
@@ -250,6 +248,17 @@ const getMyRecipes = async (req, res) => {
         res.status(500).json({ message: 'Error interno al obtener tus recetas.' });
     }
 };
+const getAllRecipes = async (req, res) => {
+    try {
+        const recipes = await Recipe.find()
+            .populate('author', 'nickname name email')
+            .sort({ createdAt: -1 });
+        res.json(recipes);
+    } catch (error) {
+        console.error('Error en getAllRecipes:', error);
+        res.status(500).json({ message: 'Error al obtener recetas.' });
+    }
+};
 module.exports = {
     createRecipe,
     getRecipes,
@@ -257,6 +266,7 @@ module.exports = {
     getRecipeById,
     deleteRecipe,
     searchRecipes,
-    getMyRecipes
+    getMyRecipes,
+    getAllRecipes
 };
 
