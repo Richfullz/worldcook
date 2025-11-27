@@ -41,35 +41,30 @@ export default function RecipeView() {
                         <Link to="/" className="rv-btn nav">🏠 Home</Link>
                         <Link to="/recipes" className="rv-btn nav">📖 Recetas</Link>
                         <Link to="/profile" className="rv-btn nav">👤 Perfil</Link>
-                    </div>
 
-                    {/* ✅ SIEMPRE visible: like, fav, rating */}
-                    <div className="rv-btn-group rv-center">
-                        <LikeButton recipeId={id} user={user} />
-                        <FavoriteButton recipeId={id} user={user} />
+                        {isOwner && (
+                            <div className="rv-btn-group rv-right">
+                                <Link to={`/recipes/edit/${recipe._id}`} className="wc-btn-primary">✏️ Editar</Link>
+                                <button
+                                    className="wc-btn-danger"
+                                    onClick={() => {
+                                        if (window.confirm('¿Eliminar esta receta?')) {
+                                            axios.delete(`/recipes/${recipe._id}`)
+                                                .then(() => {
+                                                    alert('Receta eliminada');
+                                                    navigate('/my-recipes');
+                                                })
+                                                .catch(() => alert('Error al eliminar'));
+                                        }
+                                    }}
+                                >
+                                    🗑️ Eliminar
+                                </button>
+                                <LikeButton recipeId={id} user={user} />
+                                <FavoriteButton recipeId={id} user={user} />
+                            </div>
+                        )}
                     </div>
-
-                    {/* ✅ Solo si es mi receta: editar/eliminar */}
-                    {isOwner && (
-                        <div className="rv-btn-group rv-right">
-                            <Link to={`/recipes/edit/${recipe._id}`} className="wc-btn-primary">✏️ Editar</Link>
-                            <button
-                                className="wc-btn-danger"
-                                onClick={() => {
-                                    if (window.confirm('¿Eliminar esta receta?')) {
-                                        axios.delete(`/recipes/${recipe._id}`)
-                                            .then(() => {
-                                                alert('Receta eliminada');
-                                                navigate('/my-recipes');
-                                            })
-                                            .catch(() => alert('Error al eliminar'));
-                                    }
-                                }}
-                            >
-                                🗑️ Eliminar
-                            </button>
-                        </div>
-                    )}
                 </div>
 
                 <h1 className="recipe-title">{recipe.title}</h1>
