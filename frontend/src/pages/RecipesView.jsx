@@ -5,6 +5,7 @@ import LikeButton from '../components/LikeButton';
 import FavoriteButton from '../components/FavoriteButton';
 import RatingStars from '../components/RatingStars';
 import CommentList from '../components/CommentList';
+import { getImageUrl } from '../api/images';
 
 export default function RecipeView() {
     const { id } = useParams();
