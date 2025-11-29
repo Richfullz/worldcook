@@ -1,4 +1,4 @@
-export const useAuth = () => useContext(AuthContext); import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import RecipeCard from '../components/RecipeCard';
 import axios from '../api/axios';
 
