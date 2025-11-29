@@ -158,17 +158,14 @@ export default function Register() {
                 <label>
                     <span>🖼️ Avatar</span>
                     <div className="avatar-preview-box">
-                        <img
-                            src={user?.avatar ? getImageUrl(user.avatar) : '/default-avatar.png'}
-                            alt="Avatar"
-                            className="profile-avatar"
-                        />
+                        <img src={preview} alt="Preview" className="profile-avatar" />
                         <div>
                             <input
                                 type="file"
                                 name="avatar"
                                 accept="image/*"
                                 onChange={handleFile}
+                                style={{ display: 'block', margin: '0.5rem 0' }}
                             />
                             {preview !== '/src/assets/user.png' && (
                                 <button

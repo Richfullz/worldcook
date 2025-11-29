@@ -13,7 +13,7 @@ export default function RecipeView() {
     const [recipe, setRecipe] = useState(null);
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
-    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
     useEffect(() => {
         const raw = localStorage.getItem('user');
         if (raw) setUser(JSON.parse(raw));

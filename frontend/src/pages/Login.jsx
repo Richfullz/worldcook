@@ -7,7 +7,7 @@ export default function Login() {
     const [formData, setFormData] = useState({ login: '', password: '' });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-
+    const { login } = useAuth();
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -19,9 +19,7 @@ export default function Login() {
 
         try {
             const res = await axios.post('/users/login', formData);
-            /* res.data = { token, user: {_id, name, nickname, email, avatar, bio, roles} } */
-            localStorage.setItem('token', res.data.token);
-            localStorage.setItem('user', JSON.stringify(res.data));
+            login(res.data, res.data.token);
             setLoading(false);
             navigate('/');
         } catch (err) {
