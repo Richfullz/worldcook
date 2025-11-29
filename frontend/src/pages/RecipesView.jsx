@@ -5,6 +5,7 @@ import LikeButton from '../components/LikeButton';
 import FavoriteButton from '../components/FavoriteButton';
 import RatingStars from '../components/RatingStars';
 import CommentList from '../components/CommentList';
+import { getImageUrl } from '../api/images';
 
 export default function RecipeView() {
     const { id } = useParams();
@@ -77,7 +78,7 @@ export default function RecipeView() {
             {/* ===== 2. IMAGEN COVER ===== */}
             {recipe.imageCover && (
                 <img
-                    src={`${baseUrl}${recipe.imageCover}`}
+                    src={getImageUrl(recipe.imageCover)}
                     alt={recipe.title}
                     className="recipe-cover"
                 />
@@ -122,7 +123,7 @@ export default function RecipeView() {
                         <h3>Galería</h3>
                         <div className="recipe-images-grid">
                             {recipe.images.map((img, i) => (
-                                <img key={i} src={`${baseUrl}${img}`} alt={`Paso ${i + 1}`} className="gallery-img" />
+                                <img key={i} src={getImageUrl(img)} alt={`Paso ${i + 1}`} className="gallery-img" />
                             ))}
                         </div>
                     </div>

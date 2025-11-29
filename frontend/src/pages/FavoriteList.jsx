@@ -81,4 +81,4 @@ export default function FavoriteList() {
             </div>
         </main>
     );
-}
+} i

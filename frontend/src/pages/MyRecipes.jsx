@@ -1,8 +1,3 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import axios from '../api/axios';
-import RecipeCard from '../components/RecipeCard';
-
 export default function MyRecipes() {
     const navigate = useNavigate();
     const [recipes, setRecipes] = useState([]);
