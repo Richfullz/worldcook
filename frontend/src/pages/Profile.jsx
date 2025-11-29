@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from '../api/axios';
-import { getImageUrl } from '../api/images'; // ← importación
 
 export default function Profile() {
     const navigate = useNavigate();
@@ -9,7 +8,6 @@ export default function Profile() {
     const [showModal, setShowModal] = useState(false);
     const [deleting, setDeleting] = useState(false);
     const [farewell, setFarewell] = useState(false);
-
     useEffect(() => {
         const raw = localStorage.getItem('user');
         if (!raw) {
@@ -22,6 +20,7 @@ export default function Profile() {
     const handleDelete = async () => {
         setShowModal(false);
         setDeleting(true);
+
         try {
             await axios.delete(`/users/delete/${user._id}`);
             localStorage.removeItem('token');
@@ -51,7 +50,7 @@ export default function Profile() {
 
             <div className="profile-avatar-box">
                 <img
-                    src={user?.avatar ? getImageUrl(user.avatar) : '/default-avatar.png'}
+                    src={user?.avatar ? `http://localhost:5000${user.avatar}` : '/src/assets/user.png'}
                     alt="Avatar"
                     className="profile-avatar"
                 />
@@ -65,10 +64,11 @@ export default function Profile() {
             </div>
 
             <div className="profile-actions">
-                <Link to="/my-recipes" className="wc-btn-primary">📘 Mis recetas</Link>
-                <Link to="/recipes/create" className="wc-btn-primary">📕 Crear receta</Link>
-                <Link to="/profile/edit" className="wc-btn-primary">✍🏼Editar perfil</Link>
-                <Link to="/mis-favoritos" className="wc-btn-primary">💾 Recetas guardadas</Link>
+                <Link href="/my-recipes" className="wc-btn-primary">📘 Mis recetas</Link>
+                <Link href="/profile/edit" className="wc-btn-primary">✍🏼Editar perfil</Link>
+                <Link to="/mis-favoritos" className="wc-btn-primary">
+                    💾 Recetas guardadas
+                </Link>
 
                 <button
                     className="wc-btn-danger"

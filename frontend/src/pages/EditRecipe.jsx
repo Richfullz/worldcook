@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import axios from '../api/axios';
-import { getImageUrl } from '../api/images';
 
 export default function EditRecipe() {
     const { id } = useParams();
@@ -31,7 +30,8 @@ export default function EditRecipe() {
                     prepTime: r.prepTime, cookTime: r.cookTime, servings: r.servings, category: r.category,
                     diet: r.diet.join(', '), allergens: r.allergens.join(', '),
                 });
-                setCoverPreview(r.imageCover ? getImageUrl(r.imageCover) : '/src/assets/user.png'); setLoading(false);
+                setCoverPreview(r.imageCover ? `http://localhost:5000${r.imageCover}` : '/src/assets/user.png');
+                setLoading(false);
             })
             .catch(() => { alert('No se pudo cargar la receta'); navigate('/my-recipes'); });
     }, [id, navigate]);

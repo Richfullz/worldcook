@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
-import { getImageUrl } from '../api/images';
 
 export default function FavoriteList() {
     const [favs, setFavs] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+
     useEffect(() => {
         axios.get('/favorites/my')
             .then(res => {
@@ -53,36 +53,31 @@ export default function FavoriteList() {
             </div>
 
             <div className="fav-grid">
-                {favs.map(f => {
-                    const imgPath = f.recipe.imageCover || '/default-recipe.png';
-                    return (
+                {favs.map(f => (
+                    <div key={f._id} className="fav-card">
+                        <img
+                            src={`http://localhost:5000${f.recipe.imageCover || '/default-recipe.png'}`}
+                            alt={f.recipe.title || 'Receta'}
+                            className="fav-img"
+                        />
+                        <h3>{f.recipe.title || 'Sin título'}</h3>
+                        <p>⏱️ {f.recipe.totalTime || '—'} min</p>
 
-                        <div key={f._id} className="fav-card">
-                            <img
-                                src={getImageUrl(imgPath)}
-                                alt={f.recipe.title || 'Receta'}
-                                className="fav-img"
-                            />
-                            <h3>{f.recipe.title || 'Sin título'}</h3>
-                            <p>⏱️ {f.recipe.totalTime || '—'} min</p>
-
-                            {/* BOTÓN DE ACCIÓN */}
-                            <div className="fav-actions">
-                                <Link to={`/recipes/view/${f.recipe._id}`} className="wc-btn-secondary small">
-                                    Ver receta
-                                </Link>
-                                <button
-                                    className="wc-btn-danger small"
-                                    onClick={() => handleRemove(f._id, f.recipe._id)}
-                                    title="Quitar de guardados"
-                                >
-                                    💔 Quitar
-                                </button>
-                            </div>
+                        {/* BOTÓN DE ACCIÓN */}
+                        <div className="fav-actions">
+                            <Link to={`/recipes/view/${f.recipe._id}`} className="wc-btn-secondary small">
+                                Ver receta
+                            </Link>
+                            <button
+                                className="wc-btn-danger small"
+                                onClick={() => handleRemove(f._id, f.recipe._id)}
+                                title="Quitar de guardados"
+                            >
+                                💔 Quitar
+                            </button>
                         </div>
-                    );
-                })}
-
+                    </div>
+                ))}
             </div>
         </main>
     );

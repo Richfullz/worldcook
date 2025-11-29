@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from '../api/axios';
-import { getImageUrl } from '../api/images';
 
 export default function EditProfile() {
     const navigate = useNavigate();
@@ -42,8 +41,7 @@ export default function EditProfile() {
             bio: user.bio,
             password: '',
         });
-
-        setPreview(user.avatar ? getImageUrl(user.avatar) : '/src/assets/user.png');
+        setPreview(user.avatar ? `http://localhost:5000${user.avatar}` : '/src/assets/user.png');
     }, [user]);
 
     /* Handlers */
@@ -105,11 +103,7 @@ export default function EditProfile() {
                 <label>🔐 Contraseña (solo si quieres cambiarla)<input type="password" name="password" placeholder="Deja vacío para mantener la actual" onChange={handleChange} /></label>
                 <label>📝 Bio<textarea name="bio" rows={3} value={formData.bio} onChange={handleChange} /></label>
                 <label>🖼️ Avatar
-                    <img
-                        src={user?.avatar ? getImageUrl(user.avatar) : '/default-avatar.png'}
-                        alt="Avatar"
-                        className="profile-avatar"
-                    />
+                    <img src={preview} alt="Preview" className="profile-avatar" />
                     <div className="avatar-preview-box">
                         <input type="file" name="avatar" accept="image/*" onChange={handleFile} />
                         {avatarFile && (

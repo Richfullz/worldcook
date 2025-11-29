@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from '../api/axios';
-import { getImageUrl } from '../api/images';
 
 export default function CommentList({ recipeId, user }) {
     const [comments, setComments] = useState([]);
@@ -80,7 +79,7 @@ export default function CommentList({ recipeId, user }) {
     const formatDate = date => new Date(date).toLocaleDateString('es-ES');
 
     const getAvatarSrc = (c) => {
-        if (c.user.avatar) return getImageUrl(c.user.avatar);
+        if (c.user.avatar) return `http://localhost:5000${c.user.avatar}`;
         if (avatars[c.user._id]) return avatars[c.user._id];
         return '/default-avatar.png';
     };

@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
-import { getImageUrl } from '../api/images';
 
 export default function RecipeCard({ recipe, showActions = false, onDelete }) {
     return (
         <article className="recipe-card">
             <img
-                src={recipe.imageCover ? getImageUrl(recipe.imageCover) : '/src/assets/user.png'}
+                src={recipe.imageCover ? `http://localhost:5000${recipe.imageCover}` : '/src/assets/user.png'}
                 alt={recipe.title}
                 className="recipe-img"
                 onClick={() => window.location.href = `/recipes/view/${recipe._id}`}
