@@ -5,6 +5,7 @@ import LikeButton from '../components/LikeButton';
 import FavoriteButton from '../components/FavoriteButton';
 import RatingStars from '../components/RatingStars';
 import CommentList from '../components/CommentList';
+import { getImageUrl } from '../api/images';
 
 export default function RecipeView() {
     const { id } = useParams();
@@ -12,7 +13,7 @@ export default function RecipeView() {
     const [recipe, setRecipe] = useState(null);
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
-
+    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     useEffect(() => {
         const raw = localStorage.getItem('user');
         if (raw) setUser(JSON.parse(raw));
@@ -77,7 +78,7 @@ export default function RecipeView() {
             {/* ===== 2. IMAGEN COVER ===== */}
             {recipe.imageCover && (
                 <img
-                    src={`http://localhost:5000${recipe.imageCover}`}
+                    src={getImageUrl(recipe.imageCover)}
                     alt={recipe.title}
                     className="recipe-cover"
                 />
@@ -122,7 +123,7 @@ export default function RecipeView() {
                         <h3>Galería</h3>
                         <div className="recipe-images-grid">
                             {recipe.images.map((img, i) => (
-                                <img key={i} src={`http://localhost:5000${img}`} alt={`Paso ${i + 1}`} className="gallery-img" />
+                                <img key={i} src={getImageUrl(img)} alt={`Paso ${i + 1}`} className="gallery-img" />
                             ))}
                         </div>
                     </div>
