@@ -16,13 +16,11 @@ export const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const raw = localStorage.getItem('user');  // ← carga TODO el usuario
-        if (raw) {
-            const parsed = JSON.parse(raw);          // ← parsea name, avatar, nickname, etc.
-            setUser(parsed);                         // ← ahora SÍ tienes toda la info
+        const token = localStorage.getItem('token');
+        if (token) {
+            setUser({});
         }
     }, []);
-
 
     return (
         <AuthContext.Provider value={{ user, login, logout }}>
