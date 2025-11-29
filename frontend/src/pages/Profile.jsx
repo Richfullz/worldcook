@@ -51,7 +51,7 @@ export default function Profile() {
 
             <div className="profile-avatar-box">
                 <img
-                    src={user?.avatar ? getImageUrl(user.avatar) : '/src/assets/user.png'}
+                    src={user?.avatar ? `${baseUrl}${user.avatar}` : '/default-avatar.png'}
                     alt="Avatar"
                     className="profile-avatar"
                 />
@@ -66,6 +66,7 @@ export default function Profile() {
 
             <div className="profile-actions">
                 <Link href="/my-recipes" className="wc-btn-primary">📘 Mis recetas</Link>
+                <Link to="/recipes/create" className="wc-btn-primary">📕 Crear receta</Link>
                 <Link href="/profile/edit" className="wc-btn-primary">✍🏼Editar perfil</Link>
                 <Link to="/mis-favoritos" className="wc-btn-primary">
                     💾 Recetas guardadas

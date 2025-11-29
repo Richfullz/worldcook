@@ -165,7 +165,6 @@ export default function Register() {
                                 name="avatar"
                                 accept="image/*"
                                 onChange={handleFile}
-                                style={{ display: 'block', margin: '0.5rem 0' }}
                             />
                             {preview !== '/src/assets/user.png' && (
                                 <button
