@@ -33,9 +33,9 @@ export default function Header() {
                     <>
                         <span className="user-info">
                             <img
-                                src={user.avatar ? `${baseUrl}${user.avatar}` : '/default-avatar.png'}
+                                src={user?.avatar ? getImageUrl(user.avatar) : '/default-avatar.png'}
                                 alt="Avatar"
-                                className="header-avatar"
+                                className="profile-avatar"
                             />
                             <span className="header-name">Bienvenido {user.nickname}!</span>
                         </span>

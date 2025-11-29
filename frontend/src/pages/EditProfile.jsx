@@ -105,7 +105,11 @@ export default function EditProfile() {
                 <label>🔐 Contraseña (solo si quieres cambiarla)<input type="password" name="password" placeholder="Deja vacío para mantener la actual" onChange={handleChange} /></label>
                 <label>📝 Bio<textarea name="bio" rows={3} value={formData.bio} onChange={handleChange} /></label>
                 <label>🖼️ Avatar
-                    <img src={preview} alt="Preview" className="profile-avatar" />
+                    <img
+                        src={user?.avatar ? getImageUrl(user.avatar) : '/default-avatar.png'}
+                        alt="Avatar"
+                        className="profile-avatar"
+                    />
                     <div className="avatar-preview-box">
                         <input type="file" name="avatar" accept="image/*" onChange={handleFile} />
                         {avatarFile && (

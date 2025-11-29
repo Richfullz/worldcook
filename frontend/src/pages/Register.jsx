@@ -158,7 +158,11 @@ export default function Register() {
                 <label>
                     <span>🖼️ Avatar</span>
                     <div className="avatar-preview-box">
-                        <img src={preview} alt="Preview" className="profile-avatar" />
+                        <img
+                            src={user?.avatar ? getImageUrl(user.avatar) : '/default-avatar.png'}
+                            alt="Avatar"
+                            className="profile-avatar"
+                        />
                         <div>
                             <input
                                 type="file"
