@@ -64,8 +64,8 @@ export default function Profile() {
             </div>
 
             <div className="profile-actions">
-                <Link to="/my-recipes" className="wc-btn-primary">📘 Mis recetas</Link>
-                <Link to="/profile/edit" className="wc-btn-primary">✍🏼Editar perfil</Link>
+                <Link href="/my-recipes" className="wc-btn-primary">📘 Mis recetas</Link>
+                <Link href="/profile/edit" className="wc-btn-primary">✍🏼Editar perfil</Link>
                 <Link to="/mis-favoritos" className="wc-btn-primary">
                     💾 Recetas guardadas
                 </Link>
