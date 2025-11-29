@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from '../api/axios';
+import { getImageUrl } from '../api/images';
 
 export default function Profile() {
     const navigate = useNavigate();
@@ -50,7 +51,7 @@ export default function Profile() {
 
             <div className="profile-avatar-box">
                 <img
-                    src={user?.avatar ? `http://localhost:5000${user.avatar}` : '/src/assets/user.png'}
+                    src={user?.avatar ? getImageUrl(user.avatar) : '/src/assets/user.png'}
                     alt="Avatar"
                     className="profile-avatar"
                 />

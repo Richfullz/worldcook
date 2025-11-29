@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
+import { getImageUrl } from '../api/images';
 
 export default function FavoriteList() {
     const [favs, setFavs] = useState([]);
@@ -56,7 +57,7 @@ export default function FavoriteList() {
                 {favs.map(f => (
                     <div key={f._id} className="fav-card">
                         <img
-                            src={`http://localhost:5000${f.recipe.imageCover || '/default-recipe.png'}`}
+                            src={getImageUrl(f.recipe.imageCover || '/default-recipe.png')}
                             alt={f.recipe.title || 'Receta'}
                             className="fav-img"
                         />

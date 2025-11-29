@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from '../api/axios';
+import { getImageUrl } from '../api/images';
 
 export default function LikeButton({ recipeId, user }) {
     const [liked, setLiked] = useState(false);
@@ -42,7 +43,7 @@ export default function LikeButton({ recipeId, user }) {
     };
 
     const getAvatarSrc = (l) => {
-        if (l.user.avatar) return `http://localhost:5000${l.user.avatar}`;
+        if (l.user.avatar) return getImageUrl(l.user.avatar);
         if (avatars[l.user._id]) return avatars[l.user._id];
         return '/default-avatar.png';
     };

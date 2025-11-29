@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from '../api/axios';
+import { getImageUrl } from '../api/images';
 
 export default function EditProfile() {
     const navigate = useNavigate();
@@ -41,7 +42,8 @@ export default function EditProfile() {
             bio: user.bio,
             password: '',
         });
-        setPreview(user.avatar ? `http://localhost:5000${user.avatar}` : '/src/assets/user.png');
+
+        setPreview(user.avatar ? getImageUrl(user.avatar) : '/src/assets/user.png');
     }, [user]);
 
     /* Handlers */
